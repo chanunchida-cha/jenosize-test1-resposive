@@ -5,34 +5,41 @@ import { getPostStore } from "../../../../stores/getPostStore";
 import { setterStore } from "../../../../stores/setterStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser, faGift } from "@fortawesome/free-solid-svg-icons";
-
-const PostWeeklyPoint=observer(()=> {
-    useEffect(() => {
-        const getPost = async () => {
-          await getPostStore.getPosts();
-        };
-        getPost();
-      }, []);
+import { useRouter } from "next/router";
+const PostWeeklyPoint = observer(() => {
+  const router = useRouter();
+  useEffect(() => {
+    const getPost = async () => {
+      await getPostStore.getPosts();
+    };
+    getPost();
+  }, []);
   return (
     <div>
       {getPostStore.posts
         .filter((post) => {
-            const day = new Date(post.date).getTime();
-            const start = new Date(setterStore.calenderBetween.start).getTime();
-            const end = new Date(setterStore.calenderBetween.end).getTime();
-            const dayWithOutTime = new Date(day).setUTCHours(0, 0, 0, 0);
-            const startWithOutTime = new Date(start).setUTCHours(0, 0, 0, 0);
-            const endWithOutTime = new Date(end).setUTCHours(0, 0, 0, 0);
-            const data =
-              new Date(dayWithOutTime).getTime() >=
-                new Date(startWithOutTime).getTime() &&
-              new Date(dayWithOutTime).getTime() <=
-                new Date(endWithOutTime).getTime();
-            return data;
+          const day = new Date(post.date).getTime();
+          const start = new Date(setterStore.calenderBetween.start).getTime();
+          const end = new Date(setterStore.calenderBetween.end).getTime();
+          const dayWithOutTime = new Date(day).setUTCHours(0, 0, 0, 0);
+          const startWithOutTime = new Date(start).setUTCHours(0, 0, 0, 0);
+          const endWithOutTime = new Date(end).setUTCHours(0, 0, 0, 0);
+          const data =
+            new Date(dayWithOutTime).getTime() >=
+              new Date(startWithOutTime).getTime() &&
+            new Date(dayWithOutTime).getTime() <=
+              new Date(endWithOutTime).getTime();
+          return data;
         })
         .map((post: Post, index: number) => {
           return (
-            <div className=" grid grid-cols-12 pb-3" key={index}>
+            <div
+              className=" grid grid-cols-12 pb-3"
+              key={index}
+              onClick={() => {
+                router.push(`/post/${post.id}`);
+              }}
+            >
               <div className="bg-seccond rounded-full flex justify-center text-white py-1 text-sm  h-min my-auto">
                 {index + 1}
               </div>
@@ -65,7 +72,7 @@ const PostWeeklyPoint=observer(()=> {
           );
         })}
     </div>
-  )
-})
+  );
+});
 
-export default PostWeeklyPoint
+export default PostWeeklyPoint;

@@ -14,7 +14,9 @@ const PostDialy = observer(() => {
   return (
     <div className="bg-white h-screen">
       <div className="grid grid-cols-2 py-5 px-8 ">
-        <div className="text-gray-400 text-sm">{new Date(setterStore.calendarDay).toLocaleDateString("en-GB")}</div>
+        <div className="text-gray-400 text-sm">
+          {new Date(setterStore.calendarDay).toLocaleDateString("en-GB")}
+        </div>
         <div className="flex justify-end  pt-1 text-primary">
           <FontAwesomeIcon icon={faArrowUpFromBracket}></FontAwesomeIcon>
         </div>

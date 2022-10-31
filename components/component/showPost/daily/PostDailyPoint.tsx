@@ -5,8 +5,9 @@ import { getPostStore } from "../../../../stores/getPostStore";
 import { setterStore } from "../../../../stores/setterStore";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCircleUser, faGift } from "@fortawesome/free-solid-svg-icons";
-
+import { useRouter } from "next/router";
 const PostDailyPoint = observer(() => {
+  const router = useRouter();
   useEffect(() => {
     const getPost = async () => {
       await getPostStore.getPosts();
@@ -19,13 +20,19 @@ const PostDailyPoint = observer(() => {
       {getPostStore.posts
         .filter((post) => {
           return (
-           new Date(post.date).toLocaleDateString("en-GB") ===
+            new Date(post.date).toLocaleDateString("en-GB") ===
             new Date(setterStore.calendarDay).toLocaleDateString("en-GB")
           );
         })
         .map((post: Post, index: number) => {
           return (
-            <div className=" grid grid-cols-12 pb-3" key={index}>
+            <div
+              className=" grid grid-cols-12 pb-3"
+              key={index}
+              onClick={() => {
+                router.push(`/post/${post.id}`);
+              }}
+            >
               <div className="bg-seccond rounded-full flex justify-center text-white py-1 text-sm  h-min my-auto">
                 {index + 1}
               </div>
