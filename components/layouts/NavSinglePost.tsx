@@ -27,9 +27,9 @@ const NavSinglePost = observer(() => {
             <FontAwesomeIcon icon={faChevronLeft}></FontAwesomeIcon>
           </span>
         </div>
-        {getPostStore.post.map((thePost) => {
+        {getPostStore.post.map((thePost, index: number) => {
           return (
-            <div className="flex justify-center text-white text-lg">
+            <div className="flex justify-center text-white text-lg" key={index}>
               {thePost.topic}
             </div>
           );
