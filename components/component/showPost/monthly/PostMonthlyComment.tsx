@@ -52,7 +52,7 @@ const PostMonthlyComment = observer( () =>{
                   icon={faMessage}
                 ></FontAwesomeIcon>
 
-                {` ${post.comment.length} Likes`}
+                {` ${post.comment.length} Comment`}
               </div>
             </div>
           </div>

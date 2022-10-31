@@ -53,7 +53,7 @@ const PostMonthlyDiamond = observer(() => {
                     icon={faGem}
                   ></FontAwesomeIcon>
 
-                  {` ${post.diamont} Likes`}
+                  {` ${post.diamont} Diamond`}
                 </div>
               </div>
             </div>

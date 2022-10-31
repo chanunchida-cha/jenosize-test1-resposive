@@ -54,7 +54,7 @@ const PostMonthlyPoint = observer(() => {
                     icon={faGift}
                   ></FontAwesomeIcon>
 
-                  {` ${post.point} Likes`}
+                  {` ${post.point} Point`}
                 </div>
               </div>
             </div>
