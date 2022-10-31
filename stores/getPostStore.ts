@@ -8,9 +8,11 @@ class GetPostStore {
     makeAutoObservable(this);
   }
 
+  url = process.env.NEXT_PUBLIC_URL
+
   async getPosts() {
     try {
-      const response = await axios.get("http://localhost:3000/api/post");
+      const response = await axios.get(`${this.url}/api/post`);
       this.posts = response.data;
     } catch (err) {
       console.log(err);
@@ -19,7 +21,7 @@ class GetPostStore {
 
   async getPostById(id: string | string[]) {
     try {
-      const response = await axios.get(`http://localhost:3000/api/post/${id}`);
+      const response = await axios.get(`${this.url}/api/post/${id}`);
       this.post = response.data;
     } catch (err) {
       console.log(err);
