@@ -11,7 +11,7 @@ import {
   faChevronRight,
   faGift,
 } from "@fortawesome/free-solid-svg-icons";
-import TabLikeComment from "./tabLikeComment";
+import TabLikeComment from "./TabLikeComment";
 const SinglePost = observer(() => {
   const router = useRouter();
 
