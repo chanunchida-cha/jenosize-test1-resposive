@@ -23,7 +23,7 @@ const SinglePost = observer(() => {
       await getPostStore.getPostById(id!);
     };
     getPostById();
-  }, []);
+  }, [id]);
 
   console.log(getPostStore.post);
 
